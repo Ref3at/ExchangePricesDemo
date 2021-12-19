@@ -21,6 +21,9 @@
 <!--        <item name="colorPrimarySurface">@color/primaryLightColor</item>-->
 
         <item name="android:textColor">@color/white</item>
+<!--        <item name="android:listDivider">@color/white</item>-->
+
+
 
 
     </style>

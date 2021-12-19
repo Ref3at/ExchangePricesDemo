@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/currencyPairPriceListFragment"
         android:name="com.refaat.exchangepricesdemobyrefaat.ui.CurrencyPairPriceListFragment"
-        android:label="Life time price"
+        android:label="Realtime price"
         tools:layout="@layout/fragment_currency_pair_price_list" >
         <action
             android:id="@+id/action_currencyPairPriceListFragment_to_currencyPairPriceGraphFragment"

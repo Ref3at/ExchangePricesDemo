@@ -1,18 +1,29 @@
 package com.refaat.exchangepricesdemobyrefaat.ui;
 
+import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.refaat.exchangepricesdemobyrefaat.R;
+import com.refaat.exchangepricesdemobyrefaat.data.CurrencyPairItem;
 import com.refaat.exchangepricesdemobyrefaat.databinding.FragmentCurrencyPairPriceListBinding;
+import com.refaat.exchangepricesdemobyrefaat.view.ItemAdapter;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +33,9 @@ import com.refaat.exchangepricesdemobyrefaat.databinding.FragmentCurrencyPairPri
 public class CurrencyPairPriceListFragment extends Fragment {
 
     private FragmentCurrencyPairPriceListBinding binding;
+    MainActivityViewModel mainActivityViewModel;
+    ItemAdapter itemAdapter;
+    private boolean shouldPlayTheBeepSound;
 
     public CurrencyPairPriceListFragment() {
         super(R.layout.fragment_currency_pair_price_list);
@@ -38,16 +52,37 @@ public class CurrencyPairPriceListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         binding = FragmentCurrencyPairPriceListBinding.bind(view);
 
-        binding.btnNext.setOnClickListener(new View.OnClickListener() {
+        initViews();
+
+        mainActivityViewModel = new ViewModelProvider(requireActivity()).get(MainActivityViewModel.class);
+        mainActivityViewModel.getCurrencyPairListMutableLiveData().observe(this, new Observer<List<CurrencyPairItem>>() {
             @Override
-            public void onClick(View view) {
-                NavDirections navDirections = CurrencyPairPriceListFragmentDirections.actionCurrencyPairPriceListFragmentToCurrencyPairPriceGraphFragment();
-                Navigation.findNavController(view).navigate(navDirections);
+            public void onChanged(List<CurrencyPairItem> currencyPairItems) {
+                playTheBeepSound();
+                itemAdapter.updateItems(currencyPairItems);
             }
         });
 
     }
 
+    private void initViews() {
+
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
+        binding.recyclerView.setHasFixedSize(true);
+
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(requireActivity(), DividerItemDecoration.VERTICAL);
+
+
+        itemDecoration.setDrawable(new ColorDrawable(R.color.white));
+
+        itemDecoration.setDrawable(getContext().getResources().getDrawable(R.drawable.line_divider));
+
+
+        binding.recyclerView.addItemDecoration(itemDecoration);
+        itemAdapter = new ItemAdapter();
+        binding.recyclerView.setAdapter(itemAdapter);
+
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -68,14 +103,39 @@ public class CurrencyPairPriceListFragment extends Fragment {
         }
     }
 
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mainActivityViewModel.getCurrencyPairListMutableLiveData().removeObservers(requireActivity());
+        Toast.makeText(requireActivity(), "" + itemAdapter.hasObservers(), Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        binding.recyclerView.setAdapter(null);
         binding = null;
+        mainActivityViewModel.getCurrencyPairListMutableLiveData().removeObservers(requireActivity());
     }
+
 
     void showSettingDialog() {
         new SettingDialog().show(getParentFragmentManager(), "SettingDialog");
+    }
+
+    /**
+     * Play the sound from first update not the initial values
+     */
+    void playTheBeepSound() {
+
+        if (!shouldPlayTheBeepSound) {
+            shouldPlayTheBeepSound = true;
+            return;
+        }
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(requireActivity(), R.raw.beep_beep);
+        mediaPlayer.start();
     }
 
 }
