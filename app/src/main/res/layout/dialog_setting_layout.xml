@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/lyt_preparation_time"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/primaryLightColor"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
+        android:text="@string/please_adjust_the_interval"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+        android:textSize="@dimen/_15ssp" />
+
+    <TextView
+        android:id="@+id/txt_selected_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="20 Sec"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+        android:textSize="@dimen/_22ssp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_23sdp"
+        android:contentDescription="preparation time"
+        android:paddingStart="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_5sdp"
+        android:stepSize="5.0"
+        android:value="20.0"
+        android:valueFrom="5.0"
+        android:valueTo="60.0" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_adjust"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:backgroundTint="@color/primaryColor"
+        android:text="@string/adjust"
+        android:textColor="@android:color/white" />
+</LinearLayout>

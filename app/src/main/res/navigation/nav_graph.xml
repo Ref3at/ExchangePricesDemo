@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/currencyPairPriceListFragment">
+
+    <fragment
+        android:id="@+id/currencyPairPriceListFragment"
+        android:name="com.refaat.exchangepricesdemobyrefaat.ui.CurrencyPairPriceListFragment"
+        android:label="Life time price"
+        tools:layout="@layout/fragment_currency_pair_price_list" >
+        <action
+            android:id="@+id/action_currencyPairPriceListFragment_to_currencyPairPriceGraphFragment"
+            app:destination="@id/currencyPairPriceGraphFragment" />
+        <action
+            android:id="@+id/action_currencyPairPriceListFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/currencyPairPriceGraphFragment"
+        android:name="com.refaat.exchangepricesdemobyrefaat.ui.CurrencyPairPriceGraphFragment"
+        android:label="The Graph"
+        tools:layout="@layout/fragment_currency_pair_price_graph" >
+        <action
+            android:id="@+id/action_currencyPairPriceGraphFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.refaat.exchangepricesdemobyrefaat.ui.AboutFragment"
+        android:label="About the App"
+        tools:layout="@layout/fragment_about" />
+</navigation>
