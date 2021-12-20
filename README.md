@@ -25,10 +25,19 @@ The app tech:
 Screenshots
 -------------
 
+<p float="left">
 <img src="screenshots/sc1.png" height="400" alt="Screenshot"/> 
 <img src="screenshots/sc2.png" height="400" alt="Screenshot"/> 
 <img src="screenshots/sc3.png" height="400" alt="Screenshot"/> 
+</p>
+<p float="left">
 <img src="screenshots/sc4.png" height="400" alt="Screenshot"/> 
 <img src="screenshots/sc5.png" height="400" alt="Screenshot"/> 
 <img src="screenshots/sc6.png" height="400" alt="Screenshot"/> 
+</p>
+
+
+
+
+
 
