@@ -6,4 +6,18 @@
     <string name="settings">Settings</string>
     <string name="please_adjust_the_interval">Please adjust the interval</string>
     <string name="adjust">Adjust</string>
+
+    <string name="link_text_auto"><b>Exchange Prices Demo developed by Mohamed Refaat</b>\n\n
+      <b>Kindly reach me through these channels:</b>\n\n
+        Phone: +971589857008 \n
+        Email: muhamedmahmmod@gmail.com \n
+        Github: https://github.com/Ref3at \n
+        Linkedin: https://www.linkedin.com/in/muhamed-refaat \n\n
+
+        <b>Find the updated CV from this url:</b>\n
+        https://mohamed-refaat.firebaseapp.com/RefaatResume.pdf\n\n
+        <b>Also find the apps portfolio from this url:</b>\n
+        https://sites.google.com/view/mohamed-refaat/apps\n\n\n
+    Thanks and regards.</string>
+
 </resources>
