@@ -10,8 +10,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavDirections;
@@ -19,9 +17,9 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.refaat.exchangepricesdemobyrefaat.R;
-import com.refaat.exchangepricesdemobyrefaat.data.CurrencyPairItem;
+import com.refaat.exchangepricesdemobyrefaat.model.CurrencyPairItem;
 import com.refaat.exchangepricesdemobyrefaat.databinding.ItemViewBinding;
-import com.refaat.exchangepricesdemobyrefaat.ui.CurrencyPairPriceListFragmentDirections;
+import com.refaat.exchangepricesdemobyrefaat.view.ui.CurrencyPairPriceListFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,5 @@
-package com.refaat.exchangepricesdemobyrefaat.ui;
+package com.refaat.exchangepricesdemobyrefaat.view.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
@@ -12,11 +11,10 @@ import androidx.navigation.ui.NavigationUI;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.refaat.exchangepricesdemobyrefaat.R;
 import com.refaat.exchangepricesdemobyrefaat.databinding.ActivityMainBinding;
+import com.refaat.exchangepricesdemobyrefaat.viewModel.MainActivityViewModel;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;

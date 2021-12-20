@@ -1,12 +1,10 @@
-package com.refaat.exchangepricesdemobyrefaat.ui;
+package com.refaat.exchangepricesdemobyrefaat.view.ui;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -15,6 +13,7 @@ import com.google.android.material.slider.Slider;
 import com.refaat.exchangepricesdemobyrefaat.R;
 import com.refaat.exchangepricesdemobyrefaat.databinding.DialogSettingLayoutBinding;
 import com.refaat.exchangepricesdemobyrefaat.utils.PreferencesManager;
+import com.refaat.exchangepricesdemobyrefaat.viewModel.MainActivityViewModel;
 
 public class SettingDialog extends androidx.fragment.app.DialogFragment {
     DialogSettingLayoutBinding binding;

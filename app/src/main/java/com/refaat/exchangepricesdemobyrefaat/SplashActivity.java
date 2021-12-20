@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.refaat.exchangepricesdemobyrefaat.ui.MainActivity;
+import com.refaat.exchangepricesdemobyrefaat.view.ui.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

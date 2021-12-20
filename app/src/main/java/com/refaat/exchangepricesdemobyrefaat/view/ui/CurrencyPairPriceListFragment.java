@@ -1,4 +1,4 @@
-package com.refaat.exchangepricesdemobyrefaat.ui;
+package com.refaat.exchangepricesdemobyrefaat.view.ui;
 
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
@@ -16,13 +16,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.refaat.exchangepricesdemobyrefaat.R;
-import com.refaat.exchangepricesdemobyrefaat.data.CurrencyPairItem;
+import com.refaat.exchangepricesdemobyrefaat.model.CurrencyPairItem;
 import com.refaat.exchangepricesdemobyrefaat.databinding.FragmentCurrencyPairPriceListBinding;
 import com.refaat.exchangepricesdemobyrefaat.utils.Helper;
 import com.refaat.exchangepricesdemobyrefaat.view.ItemAdapter;
+import com.refaat.exchangepricesdemobyrefaat.viewModel.MainActivityViewModel;
 
 import java.util.List;
 

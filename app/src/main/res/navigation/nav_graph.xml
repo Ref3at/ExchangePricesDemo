@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/currencyPairPriceListFragment"
-        android:name="com.refaat.exchangepricesdemobyrefaat.ui.CurrencyPairPriceListFragment"
+        android:name="com.refaat.exchangepricesdemobyrefaat.view.ui.CurrencyPairPriceListFragment"
         android:label="Realtime price"
         tools:layout="@layout/fragment_currency_pair_price_list" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/currencyPairPriceGraphFragment"
-        android:name="com.refaat.exchangepricesdemobyrefaat.ui.CurrencyPairPriceGraphFragment"
+        android:name="com.refaat.exchangepricesdemobyrefaat.view.ui.CurrencyPairPriceGraphFragment"
         android:label="The Graph"
         tools:layout="@layout/fragment_currency_pair_price_graph" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.refaat.exchangepricesdemobyrefaat.ui.AboutFragment"
+        android:name="com.refaat.exchangepricesdemobyrefaat.view.ui.AboutFragment"
         android:label="About the App"
         tools:layout="@layout/fragment_about" />
 </navigation>

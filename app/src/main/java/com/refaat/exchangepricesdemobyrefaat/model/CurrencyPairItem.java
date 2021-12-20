@@ -1,4 +1,4 @@
-package com.refaat.exchangepricesdemobyrefaat.data;
+package com.refaat.exchangepricesdemobyrefaat.model;
 
 import com.refaat.exchangepricesdemobyrefaat.utils.ChangeStatus;
 

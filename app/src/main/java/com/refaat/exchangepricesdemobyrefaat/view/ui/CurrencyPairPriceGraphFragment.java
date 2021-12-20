@@ -1,41 +1,30 @@
-package com.refaat.exchangepricesdemobyrefaat.ui;
+package com.refaat.exchangepricesdemobyrefaat.view.ui;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.refaat.exchangepricesdemobyrefaat.R;
-import com.refaat.exchangepricesdemobyrefaat.data.CurrencyPairItem;
+import com.refaat.exchangepricesdemobyrefaat.model.CurrencyPairItem;
 import com.refaat.exchangepricesdemobyrefaat.databinding.FragmentCurrencyPairPriceGraphBinding;
-import com.refaat.exchangepricesdemobyrefaat.databinding.FragmentCurrencyPairPriceListBinding;
 import com.refaat.exchangepricesdemobyrefaat.utils.IMarketDataService;
-import com.refaat.exchangepricesdemobyrefaat.utils.ImageViewWidget;
-import com.refaat.exchangepricesdemobyrefaat.utils.PreferencesManager;
-import com.refaat.exchangepricesdemobyrefaat.utils.Widget;
 import com.refaat.exchangepricesdemobyrefaat.utils.graphData.MarketDataService;
 import com.refaat.exchangepricesdemobyrefaat.utils.graphData.MovingAverage;
 import com.refaat.exchangepricesdemobyrefaat.utils.graphData.PriceBar;
 import com.refaat.exchangepricesdemobyrefaat.utils.graphData.PriceSeries;
-import com.refaat.exchangepricesdemobyrefaat.view.ItemAdapter;
-import com.scichart.charting.ClipMode;
+import com.refaat.exchangepricesdemobyrefaat.viewModel.MainActivityViewModel;
 import com.scichart.charting.Direction2D;
 import com.scichart.charting.model.dataSeries.IOhlcDataSeries;
-import com.scichart.charting.modifiers.AxisDragModifierBase;
-import com.scichart.charting.modifiers.ModifierGroup;
 import com.scichart.charting.visuals.SciChartSurface;
 import com.scichart.charting.visuals.annotations.AxisMarkerAnnotation;
 import com.scichart.charting.visuals.axes.AutoRange;
@@ -48,11 +37,9 @@ import com.scichart.core.framework.UpdateSuspender;
 import com.scichart.data.model.IRange;
 import com.scichart.extensions.builders.SciChartBuilder;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
 
 public class CurrencyPairPriceGraphFragment extends Fragment {

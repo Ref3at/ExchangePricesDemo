@@ -1,11 +1,11 @@
-package com.refaat.exchangepricesdemobyrefaat.ui;
+package com.refaat.exchangepricesdemobyrefaat.viewModel;
 
 import android.os.Handler;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.refaat.exchangepricesdemobyrefaat.data.CurrencyPairItem;
+import com.refaat.exchangepricesdemobyrefaat.model.CurrencyPairItem;
 import com.refaat.exchangepricesdemobyrefaat.utils.PreferencesManager;
 
 import java.util.ArrayList;
