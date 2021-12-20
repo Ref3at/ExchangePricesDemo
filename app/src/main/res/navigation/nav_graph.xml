@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_currencyPairPriceGraphFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <argument
+            android:name="pairIndex"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

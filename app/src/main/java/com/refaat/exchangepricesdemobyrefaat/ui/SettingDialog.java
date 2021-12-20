@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.Slider;
@@ -68,6 +69,9 @@ public class SettingDialog extends androidx.fragment.app.DialogFragment {
             @Override
             public void onClick(View view) {
                 PreferencesManager.getInstance().saveTheSelectedInterval(((int) binding.slider.getValue()));
+                MainActivityViewModel mainActivityViewModel = new ViewModelProvider(requireActivity()).get(MainActivityViewModel.class);
+                mainActivityViewModel.setTheSelectedInterval((int) binding.slider.getValue());
+
                 dismiss();
             }
         });

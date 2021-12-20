@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.14375" />
+        <entry key="app/src/main/res/drawable/example_toolbar_item_selector.xml" value="0.13385416666666666" />
+        <entry key="app/src/main/res/drawable/example_toolbar_pause.xml" value="0.2682051282051282" />
+        <entry key="app/src/main/res/drawable/example_toolbar_play.xml" value="0.275" />
         <entry key="app/src/main/res/drawable/ic_arrow_down_24.xml" value="0.27239583333333334" />
         <entry key="app/src/main/res/drawable/ic_arrow_up_24.xml" value="0.27239583333333334" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.14791666666666667" />
@@ -12,6 +15,7 @@
         <entry key="app/src/main/res/drawable/splashscreen.xml" value="0.27239583333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2421875" />
         <entry key="app/src/main/res/layout/dialog_setting_layout.xml" value="0.25625" />
+        <entry key="app/src/main/res/layout/example_toolbar_item.xml" value="0.11770833333333333" />
         <entry key="app/src/main/res/layout/fragment_about.xml" value="0.2421875" />
         <entry key="app/src/main/res/layout/fragment_currency_pair_price_graph.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/layout/fragment_currency_pair_price_list.xml" value="0.2421875" />

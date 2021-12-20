@@ -46,7 +46,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavDirections navDirections = CurrencyPairPriceListFragmentDirections.actionCurrencyPairPriceListFragmentToCurrencyPairPriceGraphFragment();
+                NavDirections navDirections = CurrencyPairPriceListFragmentDirections.actionCurrencyPairPriceListFragmentToCurrencyPairPriceGraphFragment(position);
                 Navigation.findNavController(view).navigate(navDirections);
             }
         });

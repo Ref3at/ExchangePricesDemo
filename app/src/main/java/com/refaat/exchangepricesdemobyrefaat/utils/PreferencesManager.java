@@ -33,7 +33,6 @@ public class PreferencesManager {
 
 
     public void saveTheSelectedInterval(int selectedInterval) {
-
         mPref.edit()
                 .putInt(SELECTED_INTERVAL, selectedInterval)
                 .apply();
@@ -42,9 +41,10 @@ public class PreferencesManager {
 
     public int getTheSelectedInterval() {
         return mPref.getInt(SELECTED_INTERVAL, 30);
-
-
     }
+//    public int getTheSelectedIntervalInMilliSecond() {
+//        return mPref.getInt(SELECTED_INTERVAL, 30) *1000;
+//    }
 
 
     public boolean clearPreferences() {

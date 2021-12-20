@@ -3,6 +3,9 @@ package com.refaat.exchangepricesdemobyrefaat.data;
 import com.refaat.exchangepricesdemobyrefaat.utils.ChangeStatus;
 
 import org.apache.commons.math3.util.Precision;
+
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class CurrencyPairItem {
@@ -13,6 +16,8 @@ public class CurrencyPairItem {
     private double bidPrice;
     private double askPrice;
     private double changePercentage;
+    private Date date;
+
 
 
     public CurrencyPairItem(String name, double bidPrice, double askPrice) {
@@ -45,7 +50,7 @@ public class CurrencyPairItem {
             return 0;
         }
         changePercentage = (double) Math.round(ThreadLocalRandom.current().nextDouble(-5, 5 + 1)) / 100.00;
-        //        System.out.println("randomChangeValue = " + changePercentage);
+        updateTheDate();
         return changePercentage;
     }
 
@@ -64,7 +69,11 @@ public class CurrencyPairItem {
     }
 
 
+    private void updateTheDate() {
+        this.date = Calendar.getInstance().getTime();
+    }
 
-
-
+    public Date getDate() {
+        return date;
+    }
 }

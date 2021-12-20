@@ -6,26 +6,35 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.refaat.exchangepricesdemobyrefaat.data.CurrencyPairItem;
+import com.refaat.exchangepricesdemobyrefaat.utils.PreferencesManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivityViewModel extends ViewModel {
 
-    private long interval = 6000;
+    private boolean isSimulationStarted;
 
-    private MutableLiveData<List<CurrencyPairItem>> currencyPairListMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<Integer> theSelectedInterval = new MutableLiveData<>();
+
+    private final MutableLiveData<List<CurrencyPairItem>> currencyPairListMutableLiveData = new MutableLiveData<>();
 
     public MutableLiveData<List<CurrencyPairItem>> getCurrencyPairListMutableLiveData() {
         return currencyPairListMutableLiveData;
     }
 
+
     public void startSimulation() {
+
+        if (isSimulationStarted) {
+            return;
+        }
+        isSimulationStarted = true;
 
         List<CurrencyPairItem> currencyPairItemList = new ArrayList<>();
         CurrencyPairItem currencyPairItem = new CurrencyPairItem("USD/EUR", 1.16258, 1.16298);
         CurrencyPairItem currencyPairItem1 = new CurrencyPairItem("EGP/AED", 1.87658, 1.65658);
-        CurrencyPairItem currencyPairItem2 = new CurrencyPairItem("CAD/YEn", 4.55445, 4.54445);
+        CurrencyPairItem currencyPairItem2 = new CurrencyPairItem("CAD/YEN", 4.55445, 4.54445);
 
         CurrencyPairItem currencyPairItem3 = new CurrencyPairItem("XAG/EUR", 1.16258, 1.16298);
         CurrencyPairItem currencyPairItem4 = new CurrencyPairItem("JPY/AED", 1.87658, 1.65658);
@@ -52,11 +61,7 @@ public class MainActivityViewModel extends ViewModel {
         currencyPairItemList.add(currencyPairItem10);
         currencyPairItemList.add(currencyPairItem11);
 
-
-
         currencyPairListMutableLiveData.setValue(currencyPairItemList);
-
-
 
         final android.os.Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -65,14 +70,30 @@ public class MainActivityViewModel extends ViewModel {
                 for (CurrencyPairItem item : currencyPairItemList) {
                     item.generateChangePercentage();
                     System.out.println(" change is : " + item.getChangeStatus());
-
                 }
                 currencyPairListMutableLiveData.setValue(currencyPairItemList);
-                System.out.println("********************************************************");
-                handler.postDelayed(this, interval);
+                handler.postDelayed(this, getTheSelectedIntervalInMillisecond());
             }
-        },interval);
+        }, getTheSelectedIntervalInMillisecond());
+
     }
 
 
+    public MutableLiveData<Integer> getTheSelectedInterval() {
+        if (theSelectedInterval.getValue() == null) {
+            theSelectedInterval.setValue(PreferencesManager.getInstance().getTheSelectedInterval());
+        }
+        return theSelectedInterval;
+    }
+
+    public Integer getTheSelectedIntervalInMillisecond() {
+        if (theSelectedInterval.getValue() == null) {
+            theSelectedInterval.setValue(PreferencesManager.getInstance().getTheSelectedInterval());
+        }
+        return theSelectedInterval.getValue() * 1000;
+    }
+
+    public void setTheSelectedInterval(Integer theSelectedInterval) {
+        this.theSelectedInterval.setValue(theSelectedInterval);
+    }
 }

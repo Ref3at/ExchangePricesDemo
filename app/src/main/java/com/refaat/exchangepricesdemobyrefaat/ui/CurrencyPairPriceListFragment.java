@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.refaat.exchangepricesdemobyrefaat.R;
 import com.refaat.exchangepricesdemobyrefaat.data.CurrencyPairItem;
 import com.refaat.exchangepricesdemobyrefaat.databinding.FragmentCurrencyPairPriceListBinding;
+import com.refaat.exchangepricesdemobyrefaat.utils.Helper;
 import com.refaat.exchangepricesdemobyrefaat.view.ItemAdapter;
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class CurrencyPairPriceListFragment extends Fragment {
     MainActivityViewModel mainActivityViewModel;
     ItemAdapter itemAdapter;
     private boolean shouldPlayTheBeepSound;
+    Observer observer;
 
     public CurrencyPairPriceListFragment() {
         super(R.layout.fragment_currency_pair_price_list);
@@ -55,13 +57,29 @@ public class CurrencyPairPriceListFragment extends Fragment {
         initViews();
 
         mainActivityViewModel = new ViewModelProvider(requireActivity()).get(MainActivityViewModel.class);
-        mainActivityViewModel.getCurrencyPairListMutableLiveData().observe(this, new Observer<List<CurrencyPairItem>>() {
+
+
+        binding.textClock.setText(Helper.getDateString());
+
+
+
+
+        mainActivityViewModel.getTheSelectedInterval().observe(requireActivity(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                binding.textRefreshRate.setText("The data is refreshed every "+integer+" seconds");
+            }
+        });
+
+        observer = new Observer<List<CurrencyPairItem>>() {
             @Override
             public void onChanged(List<CurrencyPairItem> currencyPairItems) {
                 playTheBeepSound();
                 itemAdapter.updateItems(currencyPairItems);
             }
-        });
+        };
+
+        mainActivityViewModel.getCurrencyPairListMutableLiveData().observe(this, observer);
 
     }
 
@@ -69,15 +87,9 @@ public class CurrencyPairPriceListFragment extends Fragment {
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         binding.recyclerView.setHasFixedSize(true);
-
         DividerItemDecoration itemDecoration = new DividerItemDecoration(requireActivity(), DividerItemDecoration.VERTICAL);
-
-
         itemDecoration.setDrawable(new ColorDrawable(R.color.white));
-
         itemDecoration.setDrawable(getContext().getResources().getDrawable(R.drawable.line_divider));
-
-
         binding.recyclerView.addItemDecoration(itemDecoration);
         itemAdapter = new ItemAdapter();
         binding.recyclerView.setAdapter(itemAdapter);
@@ -105,10 +117,9 @@ public class CurrencyPairPriceListFragment extends Fragment {
 
 
     @Override
-    public void onPause() {
-        super.onPause();
-        mainActivityViewModel.getCurrencyPairListMutableLiveData().removeObservers(requireActivity());
-        Toast.makeText(requireActivity(), "" + itemAdapter.hasObservers(), Toast.LENGTH_SHORT).show();
+    public void onStop() {
+        super.onStop();
+        shouldPlayTheBeepSound=false;
     }
 
     @Override
@@ -116,7 +127,7 @@ public class CurrencyPairPriceListFragment extends Fragment {
         super.onDestroyView();
         binding.recyclerView.setAdapter(null);
         binding = null;
-        mainActivityViewModel.getCurrencyPairListMutableLiveData().removeObservers(requireActivity());
+        mainActivityViewModel.getCurrencyPairListMutableLiveData().removeObserver(observer);
     }
 
 
